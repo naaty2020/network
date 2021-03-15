@@ -1,0 +1,70 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>{% block title %}Social Network{% endblock %}</title>
+    <link rel="icon" href="https://img.icons8.com/nolan/2x/twitter.png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="{% static 'network/styles.css' %}" rel="stylesheet">
+    <script src="{% static 'network/index.js' %}"></script>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3 fixed-top">
+        <a class="navbar-brand" href="{% url 'index' %}"><img
+                src="https://img.icons8.com/nolan/1x/twitter.png" alt="icon" width="40"
+                height="40"></a>
+        <ul class="navbar-nav mr-auto mx-auto" id="to-toggle">
+            {% if user.is_authenticated %}
+            <li class="nav-item mr-5">
+                <div class="nav-link" id="user" style="color: black;">{{ user.username }}</div>
+            </li>
+            {% endif %}
+            <li class="nav-item mr-5">
+                {% if user.is_authenticated %}
+                    <div id="all-posts" class="nav-link" style="cursor: pointer;">All Posts</div>
+                {% else %}
+                    <a id="all-posts" class="nav-link" href="{% url 'index' %}">All Posts</a>
+                {% endif %}
+            </li>
+            {% if user.is_authenticated %}
+            <li class="nav-item mr-5">
+                <div id="following" class="nav-link" style="cursor: pointer;">Following</div>
+            </li>
+            <li class="nav-item mr-5">
+                <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+            </li>
+            {% else %}
+            <li class="nav-item mr-5">
+                <a class="nav-link" href="{% url 'login' %}">Log In</a>
+            </li>
+            <li class="nav-item mr-5">
+                <a class="nav-link" href="{% url 'register' %}">Register</a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+
+    <div class="row">
+        <div class="col-sm-2">
+            {% block left %}
+            {% endblock %}
+        </div>
+        <div class="col-sm-7 pl-5 mb-5">
+            {% block body %}
+            {% endblock %}
+        </div>
+        <div class="col-sm-3">
+            {% block side %}
+            {% endblock %}
+        </div>
+    </div>
+</body>
+
+</html>

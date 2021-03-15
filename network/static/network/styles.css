@@ -1,0 +1,59 @@
+body { padding-top: 70px; }
+
+@keyframes hide {
+    0% {
+        opacity: 1;
+        height: 100%;
+        line-height: 100%;
+    }
+    100% {
+        opacity: 0;
+        height: 0%;
+        line-height: 0%;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.coms {
+    animation-name: hide;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-play-state: paused;
+}
+
+#edit-txt {
+    animation-name: emerge;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    animation-play-state: paused;
+}
+
+#user {
+    cursor: pointer;
+    color: blue;
+    font-weight: bold;
+}
+
+.btn:focus {
+    outline: 0;
+    box-shadow: none;
+}
+
+.each-post:hover {
+    background-color: #ececec;
+}
+
+hr:not(#not) {
+    margin: 0;
+}
+
+#nav-pag {
+    cursor: pointer;
+}
+
+#left {
+    display: none;
+    text-align: center;
+    background-color: #0275d8;
+}
