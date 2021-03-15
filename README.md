@@ -1,8 +1,6 @@
-# Network (Project 4)
+# Network
 
-## **CS50's Web Programming with Python and JavaScript**
-
-This is the fifth project. A single page Twitter-like social network website for making posts and following users.
+A single page Twitter-like social network website for making posts and following users.
 
 This project's source code includes 2 folders, a manage.py file which manages the whole application and an sqlite database file. Below are the **main files** under those folders.
 
